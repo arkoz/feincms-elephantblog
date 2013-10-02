@@ -6,18 +6,11 @@ from elephantblog import models
 from feincms.translations import admin_translationinline
 
 
-CategoryTranslationInline = admin_translationinline(
-    models.CategoryTranslation,
-    prepopulated_fields={
-        'slug': ('title',)
-        })
-
-
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [CategoryTranslationInline]
     list_display = ['__unicode__', 'ordering', 'entries']
     list_editable = ['ordering']
     search_fields = ['translations__title']
+    readonly_fields = ['slug']
 
     def entries(self, obj):
         return u', '.join(unicode(entry) for entry in

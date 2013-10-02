@@ -4,6 +4,7 @@ from django.db import models
 from django.db.models import signals, Q
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _, ugettext, ungettext
+from autoslug import AutoSlugField
 from feincms import translations
 from feincms.admin import item_editor
 from feincms.management.checker import check_database_schema
@@ -21,10 +22,9 @@ except ImportError:
 
 
 
-class Category(models.Model, translations.TranslatedObjectMixin):
+class Category(models.Model):
     """
-    Category is language-aware and connected to the Entry model via
-    a many to many relationship.
+    Simple Category
     """
 
     ordering = models.SmallIntegerField(_('ordering'), default=0)
@@ -35,35 +35,13 @@ class Category(models.Model, translations.TranslatedObjectMixin):
         ordering = ['ordering',]
 
     objects = translations.TranslatedObjectManager()
-
-    def __unicode__(self):
-        trans = translations.TranslatedObjectMixin.__unicode__(self)
-        return trans or _('Unnamed category')
-
-
-class CategoryTranslation(translations.Translation(Category)):
     title = models.CharField(_('category title'), max_length=100)
-    slug = models.SlugField(_('slug'), unique=True)
+    slug = AutoSlugField(_('slug'), blank=True, max_length=100, unique=True,
+                         editable=False, populate_from='title')
     description = models.CharField(_('description'), max_length=250, blank=True)
-
-    class Meta:
-        verbose_name = _('category translation')
-        verbose_name_plural = _('category translations')
-        ordering = ['title']
 
     def __unicode__(self):
         return self.title
-
-    def get_absolute_url(self):
-        return reverse('elephantblog_category_detail', kwargs={
-            'slug': self.slug,
-            })
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-
-        super(CategoryTranslation, self).save(*args, **kwargs)
 
 
 class EntryManager(models.Manager, ActiveAwareContentManagerMixin):
@@ -89,7 +67,8 @@ class Entry(Base, ContentModelMixin):
     is_featured = models.BooleanField(_('is featured'), default=False, db_index=True)
 
     title = models.CharField(_('title'), max_length=100)
-    slug = models.SlugField(_('slug'), max_length=100, unique_for_date='published_on')
+    slug = AutoSlugField(_('slug'), blank=True, unique=True, editable=False,
+                         populate_from='title', unique_with='published_on')
     author = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), related_name='blogentries',
                 limit_choices_to={'is_staff': True}, verbose_name=_('author'))
     published_on = models.DateTimeField(_('published on'), blank=True, null=True, default=now,
@@ -162,11 +141,9 @@ class EntryAdmin(item_editor.ItemEditor):
     list_display = ['title', 'is_active', 'is_featured',  'published_on', 'author']
     list_editable = ['is_active', 'is_featured']
     list_filter = ['is_active', 'is_featured', 'categories', 'author']
+    readonly_fields = ['slug']
     raw_id_fields = ['author']
     search_fields = ['title', 'slug']
-    prepopulated_fields = {
-        'slug': ('title',),
-        }
 
     fieldset_insertion_index = 1
     fieldsets = [

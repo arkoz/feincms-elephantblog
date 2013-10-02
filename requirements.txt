@@ -1,2 +1,3 @@
 FeinCMS>=1.7
 -e git://github.com/matthiask/pinging.git#egg=pinging
+django-autoslug==1.7.1
