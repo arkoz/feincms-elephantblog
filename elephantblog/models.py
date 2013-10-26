@@ -69,7 +69,6 @@ class Entry(Base, ContentModelMixin):
     title = models.CharField(_('title'), max_length=100)
     slug = AutoSlugField(_('slug'), blank=True, unique=True, editable=False,
                          populate_from='title', unique_with='published_on')
-    image = models.ImageField(_('image'), upload_to="blogimages", blank=True, default="")
     author = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), related_name='blogentries',
                 limit_choices_to={'is_staff': True}, verbose_name=_('author'))
     published_on = models.DateTimeField(_('published on'), blank=True, null=True, default=now,
@@ -154,7 +153,6 @@ class EntryAdmin(item_editor.ItemEditor):
                 ('title', 'slug'),
                 'author',
                 'categories',
-                'image',
             ]
         }],
         [None, {
