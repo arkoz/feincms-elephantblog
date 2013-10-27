@@ -42,6 +42,11 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse('elephantblog_category_detail', kwargs={
+            'slug': self.slug,
+            })
 
 
 class EntryManager(models.Manager, ActiveAwareContentManagerMixin):

@@ -62,27 +62,7 @@ class ElephantblogMixin(object):
             context, **response_kwargs)
 
 
-class TranslationMixin(object):
-    """
-    #: Determines, whether list views should only display entries from
-    #: the active language at a time. Requires the translations extension.
-    """
-    only_active_language = True
-
-    def get_queryset(self):
-        queryset = super(TranslationMixin, self).get_queryset()
-        try:
-            queryset.model._meta.get_field_by_name('language')
-        except FieldDoesNotExist:
-            return queryset
-        else:
-            if self.only_active_language:
-                return queryset.filter(language=get_language())
-            else:
-                return queryset
-
-
-class ArchiveIndexView(TranslationMixin, ElephantblogMixin, dates.ArchiveIndexView):
+class ArchiveIndexView(ElephantblogMixin, dates.ArchiveIndexView):
     paginator_class = paginator.Paginator
     paginate_by = PAGINATE_BY
     date_field = 'published_on'
@@ -90,7 +70,7 @@ class ArchiveIndexView(TranslationMixin, ElephantblogMixin, dates.ArchiveIndexVi
     allow_empty = True
 
 
-class YearArchiveView(TranslationMixin, ElephantblogMixin, dates.YearArchiveView):
+class YearArchiveView(ElephantblogMixin, dates.YearArchiveView):
     paginator_class = paginator.Paginator
     paginate_by = PAGINATE_BY
     date_field = 'published_on'
@@ -98,7 +78,7 @@ class YearArchiveView(TranslationMixin, ElephantblogMixin, dates.YearArchiveView
     template_name_suffix = '_archive'
 
 
-class MonthArchiveView(TranslationMixin, ElephantblogMixin, dates.MonthArchiveView):
+class MonthArchiveView(ElephantblogMixin, dates.MonthArchiveView):
     paginator_class = paginator.Paginator
     paginate_by = PAGINATE_BY
     month_format = '%m'
@@ -106,7 +86,7 @@ class MonthArchiveView(TranslationMixin, ElephantblogMixin, dates.MonthArchiveVi
     template_name_suffix = '_archive'
 
 
-class DayArchiveView(TranslationMixin, ElephantblogMixin, dates.DayArchiveView):
+class DayArchiveView(ElephantblogMixin, dates.DayArchiveView):
     paginator_class = paginator.Paginator
     paginate_by = PAGINATE_BY
     month_format = '%m'
@@ -210,20 +190,14 @@ class CategoryArchiveIndexView(ArchiveIndexView):
     template_name_suffix = '_archive'
 
     def get_queryset(self):
-        slug = self.kwargs['slug']
+        _slug = self.kwargs['slug']
 
         try:
             self.category = Category.objects.get(
-                translations__slug=slug,
+                slug=_slug,
                 )
         except Category.DoesNotExist:
             raise Http404('Category with slug %s does not exist' % slug)
-
-        except Category.MultipleObjectsReturned:
-            self.category = get_object_or_404(Category,
-                translations__slug=slug,
-                translations__language_code__startswith=short_language_code(),
-                )
 
         queryset = super(CategoryArchiveIndexView, self).get_queryset()
         return queryset.filter(categories=self.category)
