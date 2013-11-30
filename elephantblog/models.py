@@ -34,7 +34,6 @@ class Category(models.Model):
         verbose_name_plural = _('categories')
         ordering = ['ordering',]
 
-    objects = translations.TranslatedObjectManager()
     title = models.CharField(_('category title'), max_length=100)
     slug = AutoSlugField(_('slug'), blank=True, max_length=100, unique=True,
                          editable=False, populate_from='title')
