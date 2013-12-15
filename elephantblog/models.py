@@ -179,6 +179,6 @@ class EntryAdmin(item_editor.ItemEditor):
             db_field, request, **kwargs)
 
 
-if "bookmars" in settings.INSTALLED_APPS:
+if "bookmarks" in settings.INSTALLED_APPS:
     library.register(Entry, Handler,
                      allowed_keys=['favorited', 'shared', 'liked'])
