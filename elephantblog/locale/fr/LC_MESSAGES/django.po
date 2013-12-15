@@ -1,47 +1,45 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR vencax77@gmail.com, 2012.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-14 15:35+0100\n"
+"POT-Creation-Date: 2013-11-25 11:20-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: admin.py:25
 msgid "Blog entries in category"
-msgstr "Články v kategorii"
+msgstr ""
 
-#: contents.py:21 models.py:33
+#: contents.py:21 models.py:32
 msgid "category"
-msgstr "kategorie"
+msgstr "catégorie"
 
 #: contents.py:21
 msgid "Only show entries from this category."
-msgstr "Zobrazit pouze články v této kategorii"
+msgstr ""
 
 #: contents.py:22
-#, fuzzy
 msgid "entries per page"
-msgstr "Články"
+msgstr ""
 
 #: contents.py:23
 msgid "Set to 0 to disable pagination."
-msgstr "Zadej 0 pro vypnutí stránkování"
+msgstr ""
 
 #: contents.py:24
-#, fuzzy
 msgid "featured only"
-msgstr "Je zvýrazněný"
+msgstr ""
 
 #: contents.py:25
 msgid "Only show articles marked as featured"
@@ -49,103 +47,100 @@ msgstr ""
 
 #: contents.py:31
 msgid "Blog entry list"
-msgstr "Seznam článků"
+msgstr ""
 
 #: contents.py:32
 msgid "Blog entry lists"
-msgstr "Seznamy článků"
+msgstr ""
 
 #: contents.py:67
-#, fuzzy
 msgid "show empty categories?"
-msgstr "Kategorie článku"
+msgstr ""
 
 #: contents.py:71
-#, fuzzy
 msgid "Blog category list"
-msgstr "Seznam článků"
+msgstr ""
 
 #: contents.py:72
-#, fuzzy
 msgid "Blog category lists"
-msgstr "Seznamy článků"
+msgstr ""
 
-#: models.py:30
+#: models.py:29
 msgid "ordering"
-msgstr "Pořadí"
+msgstr ""
 
-#: models.py:34 models.py:99
+#: models.py:33 models.py:102
 msgid "categories"
-msgstr "Kategorie"
+msgstr "catégories"
 
-#: models.py:41
+#: models.py:40
 msgid "Unnamed category"
-msgstr "Bezejmenná kategorie"
+msgstr ""
 
-#: models.py:45
+#: models.py:44
 msgid "category title"
-msgstr "Název kategorie"
+msgstr ""
 
-#: models.py:46 models.py:92
+#: models.py:45 models.py:90
 msgid "slug"
-msgstr "slug"
+msgstr ""
 
-#: models.py:47
+#: models.py:46
 msgid "description"
-msgstr "Popis"
+msgstr ""
+
+#: models.py:49
+msgid "category translation"
+msgstr ""
 
 #: models.py:50
-msgid "category translation"
-msgstr "Překlad kategorie"
-
-#: models.py:51
 msgid "category translations"
-msgstr "Překlady kategorie"
+msgstr ""
 
-#: models.py:88
+#: models.py:86
 msgid "is active"
-msgstr "Je aktivní"
+msgstr ""
+
+#: models.py:87
+msgid "is featured"
+msgstr ""
 
 #: models.py:89
-msgid "is featured"
-msgstr "Je zvýrazněný"
-
-#: models.py:91
 msgid "title"
-msgstr "Název"
-
-#: models.py:94
-msgid "author"
-msgstr "Autor"
+msgstr ""
 
 #: models.py:95
-msgid "published on"
-msgstr "publikován dne"
+msgid "author"
+msgstr ""
 
 #: models.py:96
+msgid "published on"
+msgstr ""
+
+#: models.py:98
 msgid "Will be filled in automatically when entry gets published."
-msgstr "Pude automaticky vyplněno jakmile bude článek publikován"
+msgstr ""
 
-#: models.py:97
+#: models.py:99
 msgid "last change"
-msgstr "poslední změna"
+msgstr ""
 
-#: models.py:105
+#: models.py:108
 msgid "entry"
-msgstr "Článek"
+msgstr ""
 
-#: models.py:106
+#: models.py:109
 msgid "entries"
-msgstr "Články"
+msgstr ""
 
-#: models.py:150
+#: models.py:153
 #, python-format
 msgid "One entry was successfully marked as %(state)s"
 msgid_plural "%(count)s entries were successfully marked as %(state)s"
-msgstr[0] "Článek úspěšně označen jako %(state)s"
-msgstr[1] "%(count)s článků úspěšně označeno jako %(state)s"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:175
+#: views.py:172
 #, python-format
 msgid ""
 "Future %(verbose_name_plural)s not available because %(class_name)s."
@@ -154,71 +149,68 @@ msgstr ""
 
 #: extensions/blogping.py:20
 msgid "sleeping"
-msgstr "Čekající"
+msgstr ""
 
-#: extensions/blogping.py:21 extensions/blogping.py:33
+#: extensions/blogping.py:21 extensions/blogping.py:34
 msgid "queued"
-msgstr "Zařazené"
+msgstr ""
 
 #: extensions/blogping.py:22
 msgid "sent"
-msgstr "Poslané"
+msgstr ""
 
 #: extensions/blogping.py:23
 msgid "unknown"
-msgstr "Neznámé"
+msgstr ""
 
 #: extensions/blogping.py:26
 msgid "ping"
-msgstr "Pingnout"
+msgstr ""
 
-#: extensions/blogping.py:34
-#, fuzzy
+#: extensions/blogping.py:35
 msgid "Ping Again"
-msgstr "pingnout znovu"
+msgstr ""
 
 #: extensions/sites.py:11
 msgid "The sites where the blogpost should appear."
-msgstr "weby, na kterých má článek být"
+msgstr ""
 
 #: extensions/sites.py:23
 msgid "Sites"
-msgstr "Sajty"
+msgstr ""
 
 #: extensions/tags.py:8
 msgid "A comma-separated list of tags."
-msgstr "Čárkami oddělený seznam tagů"
+msgstr ""
 
-#: navigation_extensions/common.py:38
+#: navigation_extensions/common.py:41
 msgid "blog categories"
-msgstr "Kategorie článku"
+msgstr ""
 
-#: navigation_extensions/recursetree.py:11
-#: navigation_extensions/treeinfo.py:16
+#: navigation_extensions/recursetree.py:13
+#: navigation_extensions/treeinfo.py:18
 msgid "Blog date"
 msgstr ""
 
-#: navigation_extensions/recursetree.py:45
-#: navigation_extensions/treeinfo.py:42
-#, fuzzy
+#: navigation_extensions/recursetree.py:47
+#: navigation_extensions/treeinfo.py:44
 msgid "Blog category and date"
-msgstr "Kategorie článku"
-
-#: navigation_extensions/recursetree.py:65
-#: navigation_extensions/treeinfo.py:47
-#: templates/content/elephantblog/category_list.html:6
-#, fuzzy
-msgid "Categories"
-msgstr "Kategorie"
-
-#: navigation_extensions/recursetree.py:102
-#: navigation_extensions/treeinfo.py:66
-msgid "Archive"
 msgstr ""
+
+#: navigation_extensions/recursetree.py:68
+#: navigation_extensions/treeinfo.py:49
+#: templates/content/elephantblog/category_list.html:6
+msgid "Categories"
+msgstr "Catégories"
+
+#: navigation_extensions/recursetree.py:108
+#: navigation_extensions/treeinfo.py:69
+msgid "Archive"
+msgstr "Archives"
 
 #: templates/admin/feincms/elephantblog/entry/item_editor.html:13
 msgid "Preview"
-msgstr "Náhled"
+msgstr ""
 
 #: templates/content/elephantblog/entry_list.html:13
 #: templates/elephantblog/entry_archive.html:28
@@ -229,7 +221,7 @@ msgstr ""
 #: templates/elephantblog/entry_archive.html:5
 #: templates/elephantblog/entry_detail.html:5
 msgid "News"
-msgstr "Články"
+msgstr ""
 
 #: templates/elephantblog/entry_archive.html:9
 #: templates/elephantblog/entry_archive.html:10
@@ -237,6 +229,3 @@ msgstr "Články"
 #: templates/elephantblog/entry_archive.html:12
 msgid "for"
 msgstr ""
-
-#~ msgid "paginate by"
-#~ msgstr "stránkováno od"
