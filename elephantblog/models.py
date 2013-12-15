@@ -19,8 +19,10 @@ except ImportError:
     timezone = None
     from datetime import datetime
     now = datetime.now
-
-
+try:
+    from bookmarks.handlers import library, Handler
+except ImportError:
+    pass
 
 class Category(models.Model):
     """
@@ -164,3 +166,6 @@ class EntryAdmin(item_editor.ItemEditor):
         }],
         item_editor.FEINCMS_CONTENT_FIELDSET,
     ]
+
+if "bookmars" in settings.INSTALLED_APPS:
+    library.register(Entry, Handler, allowed_keys=['favorited', 'shared', 'liked'])
